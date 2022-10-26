@@ -7255,7 +7255,12 @@ dhdsdio_probe(uint16 venid, uint16 devid, uint16 bus_no, uint16 slot,
 #ifdef CUSTOMER_HW4
 	else {
 		/* Set ramdom MAC address during boot time */
-		get_random_bytes(&bus->dhd->mac.octet[3], 3);
+		/* edp17 - start */
+		/* get_random_bytes(&bus->dhd->mac.octet[3], 3);*/
+		bus->dhd->mac.octet[3] = 0x47;
+		bus->dhd->mac.octet[4] = 0x53;
+		bus->dhd->mac.octet[5] = 0x34;
+		/* edp17 - end */
 		/* Adding BRCM OUI */
 		bus->dhd->mac.octet[0] = 0;
 		bus->dhd->mac.octet[1] = 0x90;
