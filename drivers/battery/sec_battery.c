@@ -1978,6 +1978,7 @@ static void sec_bat_cable_work(struct work_struct *work)
 
 	__pm_stay_awake(&battery->monitor_ws);
 	queue_work(battery->monitor_wqueue, &battery->monitor_work);
+	power_supply_changed(&battery->psy_usb);
 end_of_cable_work:
 #if defined(CONFIG_MACH_JACTIVE_ATT)
 	if(battery->cable_type == POWER_SUPPLY_TYPE_BATTERY)
